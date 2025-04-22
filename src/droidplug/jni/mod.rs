@@ -8,6 +8,7 @@ use std::ffi::c_void;
 static GLOBAL_JVM: OnceCell<JavaVM> = OnceCell::new();
 
 pub fn init(env: &JNIEnv) -> crate::Result<()> {
+    jni_utils::init(env)?;
     if let Ok(()) = GLOBAL_JVM.set(env.get_java_vm()?) {
         env.register_native_methods(
             "com/nonpolynomial/btleplug/android/impl/Adapter",
