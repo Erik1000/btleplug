@@ -4,13 +4,13 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.2'
+        classpath 'com.android.tools.build:gradle:8.9.2'
     }
 }
 
 
 plugins {
-    id 'com.android.library'
+    id 'com.android.application' version '8.9.2'
 }
 
 
@@ -21,6 +21,7 @@ repositories {
 }
 
 android {
+    namespace 'com.nonpolynomial.btleplug.android.impl'
     compileSdkVersion 34
 
     defaultConfig {
