@@ -253,6 +253,12 @@ pub trait Peripheral: Send + Sync + Clone + Debug {
     /// Creates a connection to the device. If this method returns Ok there has been successful
     /// connection. Note that peripherals allow only one connection at a time. Operations that
     /// attempt to communicate with a device will fail until it is connected.
+    ///
+    /// # Note
+    ///
+    /// In Android, connect can only be called after a device has been discovered.
+    /// `connect` does especially then not work, after a device disconnected,
+    /// it will forever return disconnected.
     async fn connect(&self) -> Result<()>;
 
     /// Terminates a connection to the device.

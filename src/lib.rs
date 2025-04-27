@@ -104,6 +104,9 @@ pub mod serde;
 #[cfg(target_os = "windows")]
 mod winrtble;
 
+#[cfg(target_os = "android")]
+pub use droidplug::global_adapter;
+
 /// The main error type returned by most methods in btleplug.
 #[derive(Debug, thiserror::Error)]
 pub enum Error {

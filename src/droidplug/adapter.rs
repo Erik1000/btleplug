@@ -88,7 +88,13 @@ impl Adapter {
         }
     }
 
-    fn add(&self, address: BDAddr) -> Result<Peripheral> {
+    /// Adds a [`Peripheral`] based on a [`BDAddr`] without the need to scan.
+    ///
+    /// # Note
+    ///
+    /// This does not check if the [`Peripheral`] is within reach or that it
+    /// even exists.
+    pub fn add(&self, address: BDAddr) -> Result<Peripheral> {
         let env = global_jvm().get_env()?;
         let peripheral = Peripheral::new(&env, self.internal.as_obj(), address)?;
         self.manager.add_peripheral(peripheral.clone());

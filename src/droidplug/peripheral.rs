@@ -152,7 +152,7 @@ pub struct Peripheral {
 }
 
 impl Peripheral {
-    pub(crate) fn new(env: &JNIEnv, adapter: JObject, addr: BDAddr) -> Result<Self> {
+    pub fn new(env: &JNIEnv, adapter: JObject, addr: BDAddr) -> Result<Self> {
         let obj = JPeripheral::new(env, adapter, addr)?;
         Ok(Self {
             addr,
